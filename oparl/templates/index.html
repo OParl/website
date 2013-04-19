@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load blog_tags keyword_tags i18n %}
+
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+
+{% block breadcrumb_menu %}
+{% endblock %}
+
+
+
+
+{% block main %}
+
+		<div class="missionbig">
+			OParl ist eine Initiative zur Standardisierung des offenen Zugriffs auf parlamentarische Informationssysteme in Deutschland.
+		</div>
+
+		<div class="missionmedium">
+			<p>Das Ziel von OParl ist die Schaffung einer Standard-API für den Zugang zu öffentlichen Inhalten in kommunalen Ratsinformationssystemen, damit die Inhalte daraus im Sinne von Open Data für möglichst viele verschiedene Zwecke eingesetzt werden können.</p>
+
+			<p><a href="/ueber-oparl/">Mehr erfahren</a></p>
+		</div>
+
+		<div class="homenews">
+			{% load blog_tags keyword_tags i18n %}
+			{% blog_recent_posts 5 as recent_posts %}
+			{% if recent_posts %}
+				<h3>Neues von OParl</h3>
+				<ul>
+				{% for recent_post in recent_posts %}
+					<li><strong>{{ recent_post.publish_date|date:"d. M Y" }}: <a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a></strong><br/>{{ recent_post.description_from_content|truncatewords:23|safe }} <a href="{{ recent_post.get_absolute_url }}">Weiter</a>
+					</li>
+				{% endfor %}
+				</ul>
+
+				<div class="feedsubscribe"><a href="{% url "blog_post_feed" "rss" %}"><i class="icon-bullhorn"></i> {% trans "RSS Feed abonnieren" %}</a></div>
+			{% endif %}
+		</div>
+
+{% endblock %}

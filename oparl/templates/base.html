@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+{% load pages_tags mezzanine_tags i18n future staticfiles %}
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+<meta name="description" content="{% block meta_description %}{% endblock %}">
+<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+<meta property="twitter:site" content="@OParl_de">
+<link href="http://fonts.googleapis.com/css?family=Dosis:200,500" rel="stylesheet" type="text/css">
+
+{% ifinstalled mezzanine.blog %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+{% endifinstalled %}
+
+{% compress css %}
+<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+<link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
+<link rel="stylesheet" href="{% static "css/bootstrap-responsive.css" %}">
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+{% block extra_css %}{% endblock %}
+{% endcompress %}
+
+{% compress js %}
+<script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
+<script src="{% static "js/bootstrap.js" %}"></script>
+<script src="{% static "js/bootstrap-extras.js" %}"></script>
+{% block extra_js %}{% endblock %}
+{% endcompress %}
+<!--[if lt IE 9]>
+<script src="{% static "js/html5shiv.js" %}"></script>
+<![endif]-->
+
+{% block extra_head %}{% endblock %}
+
+</head>
+<body id="{% block body_id %}body{% endblock %}">
+
+    <header>
+        <div class="container">
+            <div class="brand">
+            {% if settings.SITE_TITLE %}<a href="/">
+                {{ settings.SITE_TITLE }}</a>
+                {% if settings.SITE_TAGLINE %}<span class="tagline">{{ settings.SITE_TAGLINE }}</span>{% endif %}
+            {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <div class="container navtop">
+        <div class="row">
+            <div class="span12 centered-pills">
+                {% page_menu "pages/menus/primary.html" %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        {% nevercache %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" data-alert="alert">
+            <a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
+        </div>
+        {% endfor %}
+        {% endnevercache %}
+    </div>
+
+    <div class="container main">
+        {% if not on_home %}
+        <div class="row">
+            <div class="span8 offset2">
+                <h1>{% block title %}{% endblock %}</h1>
+            </div>
+        </div>
+        {% endif %}
+        <div class="row">
+            <div class="span8 offset2">
+                {% block main %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="span8">
+                    {% page_menu "pages/menus/primary.html" %}
+                </div>
+                <div class="span4">
+                    <div class="pull-right">
+                        <ul class="nav nav-pills">
+                            <li><a href="https://github.com/OParl" target="_blank">OParl auf Github</a></li>
+                            <li><a href="https://twitter.com/OParl_de" target="_blank">OParl auf Twitter</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    {% include "includes/footer_scripts.html" %}
+
+</body>
+</html>
