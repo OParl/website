@@ -30,7 +30,7 @@
 				<h3>Neues von OParl</h3>
 				<ul>
 				{% for recent_post in recent_posts %}
-					<li><strong>{{ recent_post.publish_date|date:"d. M Y" }}: <a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a></strong><br/>{{ recent_post.description_from_content|truncatewords:23|safe }} <a href="{{ recent_post.get_absolute_url }}">Weiter</a>
+					<li><strong>{{ recent_post.publish_date|date:"d. M Y" }}: <a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a></strong><br/>{{ recent_post.description }} <a href="{{ recent_post.get_absolute_url }}">Weiter</a>
 					</li>
 				{% endfor %}
 				</ul>
