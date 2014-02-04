@@ -1,0 +1,107 @@
+
+h1, h2, h3, .brand {
+    font-family: Dosis, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 200;
+}
+h1 {
+	margin-bottom: 20px;
+}
+h2 {
+	margin-top: 25px;
+	margin-bottom: 20px;
+}
+h3 {
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+header {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	line-height: 50px;
+}
+header .brand {
+	padding-bottom: 10px;
+	border-bottom: 1px dotted #999;
+}
+header .brand a {
+	font-size: 50px;
+	color: #01AAE7;
+}
+header .tagline {
+	padding-left: 1em;
+	font-size: 18px;
+}
+
+/** Hyperlinks und blaues **/
+a, a:link {
+	color: #01AAE7;
+}
+.main a:visited {
+	color: #098aba;
+}
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover, .nav-pills > .active > a:focus {
+    color: #fff;
+    background-color: #01AAE7;
+}
+
+.navtop {
+	margin-bottom: 20px;
+}
+
+.centered-pills { text-align:center; }
+.centered-pills ul.nav-pills { display:inline-block; }
+.centered-pills li { display:inline; }
+.centered-pills a { float:left; }
+* html .centered-pills ul.nav-pills { display:inline; } /* IE6 */
+*+html .centered-pills ul.nav-pills { display:inline; } /* IE7 */
+
+
+.breadcrumb {
+	padding: 0;
+	background-color: #fff;
+}
+
+.missionbig {
+	font-family: Dosis, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 200;
+	font-size: 34px;
+	line-height: 41px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.missionmedium p {
+	font-family: Dosis, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 200;
+	font-size: 22px;
+	line-height: 30px;
+	text-align: center;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.homenews {
+	margin-top: 30px;
+	border-top: 1px dotted #999;
+}
+.homenews ul {
+	margin-left: 0;
+	margin-top: 15px;
+	margin-bottom: 20px;
+	list-style-type: none;
+}
+.homenews li {
+	margin-left: 0;
+}
+.homenews .feedsubscribe {
+	margin-top: 20px;
+}
+
+footer {
+	background: none;
+}
+footer .container {
+	margin-top: 20px;
+	padding-top: 20px;
+	border-top: 1px dotted #999;
+}
