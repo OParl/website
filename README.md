@@ -1,4 +1,4 @@
-oparl.de Website
+oparl.org Website
 ================
 
 Dies ist das Source Repository für die Website [oparl.org](http://oparl.org/).
